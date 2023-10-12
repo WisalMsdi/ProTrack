@@ -12,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ProTrack"
-include ':app'
+
+rootProject.name = "formulaire"
+include(":app")
+ 
