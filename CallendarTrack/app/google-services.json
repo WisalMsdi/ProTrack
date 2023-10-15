@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "937535339075",
+    "project_id": "androidstudio-f361c",
+    "storage_bucket": "androidstudio-f361c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937535339075:android:e1bbbde00376bdd66a72f6",
+        "android_client_info": {
+          "package_name": "com.example.callendartrack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp_xy0Qk0TGMu1S6USLmyYP-3Lkb3ZKOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
