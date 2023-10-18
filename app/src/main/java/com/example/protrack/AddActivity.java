@@ -8,26 +8,29 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class AddActivity extends AppCompatActivity {
-    EditText projectName;
-    EditText projectDescription;
-    EditText projectType;
-    EditText projectGroupe;
-    Button addPButton;
+    EditText title_input,description_input,type_input,groupe_input;
+   Button addPButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        projectName = findViewById(R.id.projectName);
-         projectDescription  = findViewById(R.id.projectDescription);
-        projectType  = findViewById(R.id.projectType);
-        projectGroupe = findViewById(R.id.projectGroupe);
+        title_input = findViewById(R.id.title_input);
+        description_input  = findViewById(R.id.description_input);
+        type_input  = findViewById(R.id.type_input);
+        groupe_input= findViewById(R.id.groupe_input);
         addPButton = findViewById(R.id.addPButton);
 
         addPButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                MyDatabase myDB = new MyDatabase(AddActivity.this);
+                myDB.addProject(title_input.getText().toString().trim(),
+                        description_input.getText().toString().trim(),
+                        type_input.getText().toString().trim(),
+                        groupe_input.getText().toString().trim());
+
             }
         });
 

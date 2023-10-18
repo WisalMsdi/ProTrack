@@ -1,10 +1,12 @@
 package com.example.protrack;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -17,10 +19,11 @@ public class MyDatabase extends SQLiteOpenHelper {
     private static final String TABLE_NAME="My_Protarck";
     private static final String COLOUMN_ID="_id";
     private static final String COLOUMN_TITLE="project_title";
-    private static final String COLUMN_DESCRIPTION="project_description";
+    private static final String COLOUMN_DESCRIPTION="project_description";
+    private static final String COLOUMN_TYPE="project_type";
     private static final String COLOUMN_OWNER="project_owner";
     private static final String COLOUMN_STATUE="project_statue";
-    private static final String COLOUMN_MEMBERS="project_members";
+    private static final String COLOUMN_GROUPE="project_members";
     public enum Status {
         PENDING,
         IN_PROGRESS,
@@ -37,13 +40,14 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query ="CREATE TABLE"+TABLE_NAME+"("+
-                  COLOUMN_ID+"INTEGR PRIMARY KEY AUTOINCREMENT,"+
-                  COLOUMN_TITLE +"Text,"+
-                  COLUMN_DESCRIPTION +"Text,"+
-                  COLOUMN_OWNER+"Text,"+
-                  COLOUMN_STATUE+"INTEGER,"+
-                  COLOUMN_MEMBERS+"Text"+");";
+        String query ="CREATE TABLE "+TABLE_NAME+"("+
+                  COLOUMN_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                  COLOUMN_TITLE +" Text,"+
+                COLOUMN_DESCRIPTION +" Text,"+
+                COLOUMN_TYPE+" Text,"+
+                  COLOUMN_OWNER+" Text,"+
+                  COLOUMN_STATUE+" INTEGER,"+
+                  COLOUMN_GROUPE+" Text"+");";
         db.execSQL(query);
         try {
             db.execSQL(query);
@@ -56,6 +60,27 @@ public class MyDatabase extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
-onCreate(db);
+        onCreate(db);
+    }
+
+    void addProject(String title, String description ,String type,String groupe){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues data =new ContentValues();
+
+        data.put(COLOUMN_TITLE,title);
+        data.put(COLOUMN_DESCRIPTION,description);
+        data.put(COLOUMN_TYPE,type);
+        data.put(COLOUMN_GROUPE,groupe);
+        long result =db.insert(TABLE_NAME,null,data);
+        if(result ==-1){
+            Log.d("insert","Failed");
+        }
+        else {
+            Log.d("insert","Added");
+        }
+
+
+
+
     }
 }
