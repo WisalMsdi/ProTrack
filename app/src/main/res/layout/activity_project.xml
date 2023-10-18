@@ -7,11 +7,26 @@
     android:layout_height="match_parent"
     tools:context=".ProjectActivity">
 
-<androidx.cardview.widget.CardView
+<!--<androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:id="@+id/cardView"/>
+    android:id="@+id/cardView">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</androidx.cardview.widget.CardView>-->
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Projects"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="41dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
