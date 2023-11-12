@@ -19,9 +19,7 @@ public class ProjectActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     private FloatingActionButton addPbtn;
-    MyDatabase myDB;
     ArrayList<String> project_id,project_title,project_description,project_type,project_owner,project_groupe,project_statue;
-    CustomAdapter customAdapter;
     //@SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,31 +39,31 @@ public class ProjectActivity extends AppCompatActivity {
 
 
 
-        myDB =new MyDatabase(ProjectActivity.this);
+      //  myDB =new MyDatabase(ProjectActivity.this);
         project_id = new ArrayList<>();
         project_title= new ArrayList<>();
         project_description= new ArrayList<>();
         project_statue= new ArrayList<>();
 
-        storeDataInArrays();
+   //     storeDataInArrays();
 
-      customAdapter = new CustomAdapter(ProjectActivity.this,project_id,project_title,project_description,project_statue);
-      recyclerView.setAdapter(customAdapter);
+    //  customAdapter = new CustomAdapter(ProjectActivity.this,project_id,project_title,project_description,project_statue);
+     // recyclerView.setAdapter(customAdapter);
       recyclerView.setLayoutManager(new LinearLayoutManager(ProjectActivity.this));
     }
-    void storeDataInArrays(){
-        Cursor cursor = myDB.readAllData();
-        if(cursor.getCount() == 0){
-            Log.d("get all project ","No Data");
-        }else {
-            while (cursor.moveToNext()){
+    //void storeDataInArrays(){
+     //   Cursor cursor = myDB.readAllData();
+     //   if(cursor.getCount() == 0){
+      //      Log.d("get all project ","No Data");
+       // }else {
+         //   while (cursor.moveToNext()){
 
-                project_id.add(cursor.getString(0));
-                project_title.add(cursor.getString(1));
-                project_description.add(cursor.getString(2));
-                project_statue.add(cursor.getString(3));
-            }
-        }
-    }
+             //   project_id.add(cursor.getString(0));
+        // project_title.add(cursor.getString(1));
+        //      project_description.add(cursor.getString(2));
+        //      project_statue.add(cursor.getString(3));
+          //  }
+     //   }
+   // }
 
 }

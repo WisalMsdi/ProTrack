@@ -27,10 +27,10 @@ public class AddActivity extends AppCompatActivity {
         addPButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                MyDatabase myDB = new MyDatabase(AddActivity.this);
-                myDB.addProject(title_input.getText().toString().trim(),
-                        description_input.getText().toString().trim(),
-                        statue_input.getText().toString().trim());
+              //  MyDatabase myDB = new MyDatabase(AddActivity.this);
+                //myDB.addProject(title_input.getText().toString().trim(),
+                     //   description_input.getText().toString().trim(),
+                       // statue_input.getText().toString().trim());
                 finish();
             }
         });
