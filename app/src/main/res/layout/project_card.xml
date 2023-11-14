@@ -26,6 +26,15 @@
             android:textColor="@color/white"
             android:textSize="24sp" />
 
+        <View
+            android:id="@+id/greenCircle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/green_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/rc_description"
             android:layout_below="@+id/rc_title"

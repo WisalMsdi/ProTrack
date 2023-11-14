@@ -8,11 +8,11 @@ import androidx.room.RoomDatabase;
 
 import com.example.protrack.Models.Project;
 // the list of enteties
-@Database(entities = Project.class,version =1,exportSchema = false)
+@Database(entities = {Project.class},version =1,exportSchema = false)
 public abstract class RoomDB  extends RoomDatabase {
 
     private static  RoomDB database;
-    private static String DATABASE_NAME = "ProtarckApp";
+    private static String DATABASE_NAME = "ProtarckDB";
 
     public synchronized static RoomDB getInstance(Context context){
         if(database == null){

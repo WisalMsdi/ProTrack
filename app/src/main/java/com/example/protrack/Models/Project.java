@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity(tableName = "projects")
+//@Entity(tableName = "projects")
+@Entity()
 public class Project implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id=0;
@@ -19,7 +20,7 @@ public class Project implements Serializable {
     @ColumnInfo(name="creatAt")
     String ceratAt ;
     @ColumnInfo(name="active")
-    boolean active ;
+    boolean active = false;
 
     public int getId() {
         return id;

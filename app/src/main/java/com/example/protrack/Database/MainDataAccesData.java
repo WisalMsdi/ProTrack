@@ -15,13 +15,20 @@ public interface MainDataAccesData {
     @Insert(onConflict = REPLACE)
     void insert(Project project);
 
-    @Query("Select * From projects Order By id Desc")
+    @Query("SELECT * FROM Project ORDER By id DESC")
     List<Project> getAll();
 
 
-    @Query("Update projects Set title =:title, description= :description where id =:id ")
+    @Query("UPDATE Project SET title =:title, description= :description WHERE id =:id ")
     void update(int id ,String title,String description);
 
+
+    @Query("update Project set active = :active where id = :id")
+    void isActive(int id, boolean active);
+
+
+    @Query("SELECT * FROM Project WHERE id = :projectId")
+    Project getProjectById(int projectId);
     @Delete
     void delete(Project project);
 }
