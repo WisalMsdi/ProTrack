@@ -8,9 +8,14 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import com.google.android.material.tabs.TabLayout;
 public class MainActivity extends AppCompatActivity {
+    private MyNavController myNavController;
     private TabLayout tabLayout;
     private ViewPager2 viewPager2;
     private ViewPagerAdapter adapter;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,23 +27,34 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         adapter = new ViewPagerAdapter(fragmentManager, getLifecycle());
         viewPager2.setAdapter(adapter);
+
+        myNavController = new MyNavController(fragmentManager); // Initialisation de MyNavController
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager2.setCurrentItem(tab.getPosition());
             }
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+    }
+
+
+    public MyNavController getMyNavController() {
+        return myNavController;
     }
 }

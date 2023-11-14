@@ -2,11 +2,15 @@ package com.example.formulaire;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +27,7 @@ public class LoginTabFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private MyNavController myNavController;
     public LoginTabFragment() {
         // Required empty public constructor
     }
@@ -56,9 +60,41 @@ public class LoginTabFragment extends Fragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button loginButton = view.findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (MyApplication.appDatabase != null) {
+                    // Create a user and insert it into the database
+                    User user = new User();
+                    user.setUsername("JohnDoe");
+                    MyApplication.appDatabase.userDao().insert(user);
+
+                    // Now you can navigate to the dashboard
+                    myNavController.navigateToDashboard();
+                } else {
+                    Log.e("LoginTabFragment", "AppDatabase is null");
+                    // Handle the situation where the database is null
+                }
+            }
+        });
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login_tab, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_login_tab, container, false);
+
+        // Initialisation de myNavController en récupérant l'instance depuis MainActivity
+        myNavController = ((MainActivity) requireActivity()).getMyNavController();
+
+        return rootView;
     }
 }
+
+
